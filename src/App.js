@@ -1,23 +1,27 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState } from "react";
+import data from "./data.json";
+import "./App.css";
+import Header from "./Header";
+import ToDoList from "./ToDoList";
 
 function App() {
+  const [toDoList, setToDoList] = useState(data);
+
+  const handleToggle = (id) => {
+    /*let mapped = toDoList.map((task) => {
+      return task.id === id
+        ? { ...task, complete: !task.complete }
+        : { ...task };
+    });
+    setToDoList(mapped);
+    */
+    console.log("working");
+  };
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      Hello World! A To Do List Will Go here!
+      <Header></Header>
+      <ToDoList toDoList={toDoList} handleToggle={handleToggle} />
     </div>
   );
 }
